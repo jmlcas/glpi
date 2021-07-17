@@ -8,10 +8,10 @@ services:
     restart: unless-stopped
     hostname: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=glpidb
+      - MYSQL_ROOT_PASSWORD=glpi_pass
+      - MYSQL_DATABASE=glpi_db
       - MYSQL_USER=glpi_user
-      - MYSQL_PASSWORD=glpi
+      - MYSQL_PASSWORD=glpi_pass
     volumes:
       - ./mysql:/var/lib/mysql     
 
@@ -19,7 +19,7 @@ services:
     image: diouxx/glpi
     container_name : glpi
     restart: unless-stopped
-    hostname: glpi
+#   hostname: glpi
     ports:
       - "8200:80"
     volumes:
