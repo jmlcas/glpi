@@ -24,3 +24,5 @@ services:
     environment:
       - TIMEZONE=Europe/Madrid
     restart: unless-stopped
+    
+    
