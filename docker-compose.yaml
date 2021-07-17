@@ -1,26 +1,33 @@
-version: "3.2"
+version: "3.3"
 
 services:
 
-  mysql:
-    image: mariadb
-    container_name: mariadb
-    restart: unless-stopped
-    hostname: mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=glpi_pass
-      - MYSQL_DATABASE=glpi_db
-      - MYSQL_USER=glpi_user
-      - MYSQL_PASSWORD=glpi_pass
-    volumes:
-      - ./mysql:/var/lib/mysql     
+    mariadb-glpi: 
+        image: mariadb
+        restart: unless-stopped
+        volumes: 
+          - ./mariadb-glpi-volume:/var/lib/mysql:rw
+        environment: 
+          MYSQL_DATABASE: glpidb
+          MYSQL_USER: glpi-user 
+          MYSQL_PASSWORD: glpi-pass 
+          MYSQL_RANDOM_ROOT_PASSWORD: "1" 
+        ports: 
+          - "3306:3306"
 
-  glpi:
-    image: diouxx/glpi
-    container_name : glpi
-    restart: unless-stopped
-#   hostname: glpi
-    ports:
-      - "8200:80"
-    volumes:
-      - ./glpi/glpi/:/var/www/html/glpi            
+
+    glpi: 
+        image: diouxx/glpi
+        restart: unless-stopped
+        volumes: 
+          - ./glpi/:/var/www/html/glpi
+        environment: 
+          MYSQL_HOST: mariadb-glpi
+          MYSQL_PORT: 3306
+          MYSQL_DATABASE: glpidb
+          MYSQL_USER: glpi-user
+          MYSQL_PASSWORD: glpi-pass
+        depends_on: 
+          - mariadb-glpi
+        ports: 
+          - "8200:80"    
