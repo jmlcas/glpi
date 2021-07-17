@@ -1,0 +1,26 @@
+version: "3.2"
+
+services:
+
+  mysql:
+    image: mariadb
+    container_name: mariadb
+    restart: unless-stopped
+    hostname: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=glpidb
+      - MYSQL_USER=glpi_user
+      - MYSQL_PASSWORD=glpi
+    volumes:
+      - ./mysql:/var/lib/mysql     
+
+  glpi:
+    image: diouxx/glpi
+    container_name : glpi
+    restart: unless-stopped
+    hostname: glpi
+    ports:
+      - "8200:80"
+    volumes:
+      - ./glpi/glpi/:/var/www/html/glpi            
