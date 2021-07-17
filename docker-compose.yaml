@@ -3,7 +3,7 @@ version: "3.2"
 services:
 
   mysql:
-    image: mysql:5.7.23
+    image: mariadb
     container_name: mysql
     hostname: mysql
     volumes:
