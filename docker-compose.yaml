@@ -1,0 +1,26 @@
+version: "3.2"
+
+services:
+
+  mysql:
+    image: mysql:5.7.23
+    container_name: mysql
+    hostname: mysql
+    volumes:
+      - ./mysql:/var/lib/mysql
+    env_file:
+      - ./mysql.env
+    restart: unless-stopped
+
+
+  glpi:
+    image: diouxx/glpi
+    container_name : glpi
+    hostname: glpi
+    ports:
+      - "8200:80"
+    volumes:
+      - ./glpi/:/var/www/html/glpi
+    environment:
+      - TIMEZONE=Europe/Madrid
+    restart: unless-stopped
