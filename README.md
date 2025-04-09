@@ -16,13 +16,13 @@ contraseña: glpi
 
 Los usuarios / contraseñas predeterminadas son:
 
-glpi/glpi para la cuenta de administrador
+glpi/glpi - para la cuenta de administrador
 
-tech/tech para la cuenta técnica
+tech/tech - para la cuenta técnica
 
-normal/normal para la cuenta normal
+normal/normal - para la cuenta normal
 
-post-only/postonly para la cuenta de publicación
+post-only/postonly - para la cuenta de publicación
 
 
 
