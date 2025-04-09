@@ -8,7 +8,7 @@ Ver en "Localhost:8200" o "IP:8200"
 
 host: mariadb
 
-usuario: glpi
+usuario: glpi_user
 
 contraseña: glpi
 
