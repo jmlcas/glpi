@@ -10,6 +10,7 @@ usuario: glpi
 
 contraseña: glpi
 
+----------------
 
 Los usuarios / contraseñas predeterminadas son:
 
