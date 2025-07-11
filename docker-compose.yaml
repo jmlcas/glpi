@@ -18,7 +18,7 @@ services:
     ports:
       - "8200:80"
     volumes:
-      - ./glpi/:/var/www/html/glpi
+      - ./glpi/:/var/glpi:rw
     depends_on:
       - mariadb  
     environment:
