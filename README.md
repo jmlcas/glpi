@@ -1,6 +1,6 @@
 # GLPI 
 
-Ver en "Localhost:8200" o "IP:8200" 
+Ver en "http://localhost:8200" o "IP:8200" 
 
 ----------------
 
@@ -8,9 +8,9 @@ Ver en "Localhost:8200" o "IP:8200"
 
 host: mariadb
 
-usuario: glpi_user
+usuario: user
 
-contraseña: glpi
+contraseña: p4ssw0rd
 
 ----------------
 
