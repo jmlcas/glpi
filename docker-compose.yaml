@@ -2,26 +2,30 @@ services:
 
   mariadb:
     image: mariadb:latest
-    container_name: glpidb
-    hostname: mariadb
+    container_name: glpi-db
     volumes:
       - ./mysql:/var/lib/mysql
-    env_file:
-      - ./mariadb.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=p4ssw0rd
+      - MYSQL_DATABASE=glpi
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=p4ssw0rd
     restart: unless-stopped
 
-
   glpi:
-    image: diouxx/glpi:latest
-    container_name : glpi
-    hostname: glpi
+    image: diouxx/glpi:latest     # rosnertech/glpi:latest
+    container_name: glpi
     ports:
       - "8200:80"
     volumes:
       - ./glpi/:/var/www/html/glpi
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro      
+    depends_on:
+      - mariadb  
     environment:
+      - DB_HOST=mariadb
+      - DB_NAME=glpi
+      - DB_USER=user
+      - DB_PASSWORD=p4ssw0rd
       - TIMEZONE=Europe/Madrid
     restart: unless-stopped
     
