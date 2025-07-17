@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
 
   glpi:
-    image: glpi/glpi:latest
+    image: diouxx/glpi:latest
     container_name: glpi
     ports:
       - "8200:80"
