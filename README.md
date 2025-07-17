@@ -6,7 +6,7 @@ Ver en "http://localhost:8200" o "IP:8200"
 
 ### Configurando GLPI
 
-MariaDB
+mariadb
 
 usuario: user
 
